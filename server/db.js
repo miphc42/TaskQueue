@@ -1,5 +1,8 @@
 require('dotenv').config()
 const Pool = require("pg").Pool;
+
+// utilizing .env file to hide sensitive data 
+
 const pool = new Pool({
     user: process.env.USER,
     password: process.env.PASSWORD,

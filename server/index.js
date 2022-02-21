@@ -3,13 +3,12 @@ const cors = require("cors");
 const pool = require("./db");
 const app = express();
 
-// middleware
+// Middleware
 app.use(cors());
 app.use(express.json());
 
 // ROUTES
 
-// create a todo
 app.post("/todos", async (req, res) => {
   try {
     const { description } = req.body;
@@ -23,7 +22,6 @@ app.post("/todos", async (req, res) => {
   }
 });
 
-// get all todos
 app.get("/todos", async (req, res) => {
   try {
     const allTodos = await pool.query("SELECT * FROM todo");
@@ -33,7 +31,6 @@ app.get("/todos", async (req, res) => {
   }
 });
 
-// get a todo
 app.get("/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -46,7 +43,6 @@ app.get("/todos/:id", async (req, res) => {
   }
 });
 
-// update a todo
 app.put("/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -62,7 +58,6 @@ app.put("/todos/:id", async (req, res) => {
   }
 });
 
-// delete a todo
 app.delete("/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
